@@ -3,14 +3,10 @@ $results = @()
 
 $azureapps = Get-AzureRMADApplication 
 foreach ($app in $azureapps) {
-
     $expiringcred = Get-AzureRMADAppCredential -ObjectId $app.ObjectId
-    # an app can have more than one secret / cert
     foreach ($e in $expiringcred) {
-
         if ($null -ne $e.enddate) {
             if ([datetime]$e.enddate -lt (get-date).AddDays($daystomonitor) -and ([datetime]$e.enddate -ge (get-date))) {
-            
                 $results += [PSCustomObject]@{
                     AzureADName   = $app.displayname
                     StartDate     = $e.StartDate
