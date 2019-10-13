@@ -1,4 +1,3 @@
-# for use with ConEmu 
 ## Dracula readline configuration. Requires version 2.0, if you have 1.2 convert to `Set-PSReadlineOption -TokenType`
 <#
 Set-PSReadlineOption -Color @{
